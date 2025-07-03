@@ -1,0 +1,31 @@
+<button class="homeButton" routerLink="/">Home</button>
+
+<div class="emi-container">
+  <h2>EMI Calculator</h2>
+
+  <form (ngSubmit)="calculateEmi()">
+    <div>
+      <label>Principal Amount (₹):</label>
+      <input type="number" [(ngModel)]="form.principal" name="principal" required />
+    </div>
+
+    <div>
+      <label>Annual Interest Rate (%):</label>
+      <input type="number" [(ngModel)]="form.rate" name="rate" step="0.01" required />
+    </div>
+
+    <div>
+      <label>Duration (Months):</label>
+      <input type="number" [(ngModel)]="form.months" name="months" required />
+    </div>
+
+    <button type="submit">Calculate EMI</button>
+  </form>
+
+  <div *ngIf="emiData" class="result">
+    <h3>Result</h3>
+    <p><strong>EMI:</strong> ₹{{ emiData?.emi?.toFixed(2) }}</p>
+    <p><strong>Total Payable:</strong> ₹{{ emiData?.total?.toFixed(2) }}</p>
+    <p><strong>Total Interest:</strong> ₹{{ emiData?.interest?.toFixed(2) }}</p>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<button class="homeButton" routerLink="/">Home</button>
+<div class="inv-container">
+  <h2>Investment Calculator</h2>
+
+  <form (ngSubmit)="calculateInvestment()">
+    <div>
+      <label>Principal Amount (₹):</label>
+      <input type="number" [(ngModel)]="form.principal" name="principal" required />
+    </div>
+
+    <div>
+      <label>Annual Interest Rate (%):</label>
+      <input type="number" [(ngModel)]="form.rate" name="rate" step="0.01" required />
+    </div>
+
+    <div>
+      <label>Duration (Years):</label>
+      <input type="number" [(ngModel)]="form.years" name="years" required />
+    </div>
+
+     <div>
+      <label>Frequency</label>
+      <input type="number" [(ngModel)]="form.frequency" name="frequency" required />
+    </div>
+
+    <button type="submit">Calculate Investment Profit</button>
+  </form>
+
+  <div *ngIf="invest" class="result">
+    <h3>Result</h3>
+    <p><strong>Maturity Amount : </strong> ₹{{ invest?.maturityAmount?.toFixed(2) }}</p>
+    <p><strong>Interest : </strong> ₹{{ invest?.interest?.toFixed(2) }}</p>
+   
+  </div>
+</div>
