@@ -18,7 +18,7 @@ export class CalculationsService {
     return this.http.post<Emi>(`${this.apiURL}/postEmi`, data);
   }
 
-  postInvestment(data : Partial<Investment>): Observable<any> {
-    return this.http.post(`${this.apiURL}/postInvestment`, data);
+  postInvestment(data : Partial<Investment>): Observable<Investment> {
+    return this.http.post<Investment>(`${this.apiURL}/postInvestment`, data);
   }
 }
